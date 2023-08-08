@@ -11,7 +11,7 @@
 	<CardBody>
 		<ul>
 			{#each steps as step, i}
-				<li on:click={() => goto(`/movie?clip=${i}`)}>
+				<li on:click={() => goto(`/home/${i+1}`)}>
 					<span>
 						{step.name}
 					</span>

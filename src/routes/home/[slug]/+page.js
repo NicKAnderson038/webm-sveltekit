@@ -1,7 +1,6 @@
 /** @type {import('./$types').PageLoad} */
 // eslint-disable-next-line no-unused-vars
 export async function load({ fetch, params }) {
-	console.log(params.slug)
 	try {
 		const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${params.slug}`)
 		const item = await res.json()
