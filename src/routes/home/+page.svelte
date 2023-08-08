@@ -1,10 +1,10 @@
 <script>
-	import { page } from '$app/stores';
-	import { useAudio } from '../../stores/store.js';
-	import Button from '../../lib/components/Buttons/Button.svelte';
-	import Card from '../../lib/components/Card/Wrapper.svelte';
-	import CardHeader from '../../lib/components/Card/Header.svelte';
-	import CardActions from '../../lib/components/Card/Footer.svelte';
+	import { page } from '$app/stores'
+	import { useAudio } from '../../stores/store.js'
+	import Button from '../../lib/components/Buttons/Button.svelte'
+	import Card from '../../lib/components/Card/Wrapper.svelte'
+	import CardHeader from '../../lib/components/Card/Header.svelte'
+	import CardActions from '../../lib/components/Card/Footer.svelte'
 
 	// let poster = "https://sveltejs.github.io/assets/caminandes-llamigos.jpg"
 
@@ -13,10 +13,10 @@
 		// src: '/video/37.webm',
 		// width: '600',
 		autoPlay: true,
-		loop: true
-	};
-	$: muted = !$useAudio || !!$page?.data?.data?.[0]?.audio;
-	$: console.log($page?.data);
+		loop: true,
+	}
+	$: muted = !$useAudio || !!$page?.data?.data?.[0]?.audio
+	$: console.log($page?.data)
 </script>
 
 <svelte:head>

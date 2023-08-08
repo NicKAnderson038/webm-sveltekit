@@ -13,7 +13,7 @@ export async function load({ fetch, params }) {
 				audio: 'http://www.jplayer.org/audio/mp3/Miaow-01-Tempered-song.mp3',
 				endLoop: 2,
 				startLoop: 0,
-				name: `Good Moring ${i}`
+				name: `Good Moring ${i}`,
 			})
 			return acc
 		}, [])

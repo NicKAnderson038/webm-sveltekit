@@ -21,7 +21,7 @@
 	let video
 	let audio
 	let action = false
-    // TODO: duration might work better as undefined
+	// TODO: duration might work better as undefined
 	let duration = 0
 	let currentTime = 50
 	let currentAudioTime = 0
@@ -29,18 +29,18 @@
 	onMount(() => {
 		video = document.getElementById('video')
 		audio = document.getElementById('audio')
-        video.currentTime = $page?.data?.data?.startLoop
-        // audio.currentAudioTime = $page?.data?.data?.startLoop
+		video.currentTime = $page?.data?.data?.startLoop
+		// audio.currentAudioTime = $page?.data?.data?.startLoop
 	})
 
 	const trackCurrentTime = async () => {
-        // if(currentTime > $page?.data?.data?.endLoop && action) {
-        //     console.log(duration)
-        //     await video?.play()
-        //     // video.currentTime = $page?.data?.data?.startLoop
-        //     currentTime = $page?.data?.data?.startLoop
-        //     action = false
-        // }
+		// if(currentTime > $page?.data?.data?.endLoop && action) {
+		//     console.log(duration)
+		//     await video?.play()
+		//     // video.currentTime = $page?.data?.data?.startLoop
+		//     currentTime = $page?.data?.data?.startLoop
+		//     action = false
+		// }
 		if (currentTime > duration - 0.09 && action) {
 			console.log('Action: ', currentTime)
 			await audio?.play()
@@ -61,8 +61,9 @@
 	}
 
 	$: currentTime, trackCurrentTime()
-    $: console.log(action, duration)
+	$: console.log(action, duration)
 </script>
+
 <!-- {`${$page?.data?.data?.video}#t=5,8`} -->
 <Card>
 	<CardHeader
@@ -73,8 +74,8 @@
 			autoPlay
 			loop
 			bind:muted
-            bind:duration
-            bind:currentTime
+			bind:duration
+			bind:currentTime
 		>
 			<track kind="captions" />
 			Your browser does not support HTML5 video.
@@ -89,7 +90,7 @@
 			/>
 		{/if} -->
 	</CardHeader>
-    <CardActions>
+	<CardActions>
 		<Button
 			click={() => (step === 1 ? goto('/home') : goto(`/home/${step - 1}`))}
 			disabled={action}
