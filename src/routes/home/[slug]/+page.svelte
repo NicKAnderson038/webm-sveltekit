@@ -30,7 +30,7 @@
 		video = document.getElementById('video')
 		audio = document.getElementById('audio')
 		video.currentTime = $page?.data?.data?.startLoop
-		console.log(!!audio)
+
 		if (!!audio) {
 			audio.currentAudioTime = $page?.data?.data?.startLoop
 		}
