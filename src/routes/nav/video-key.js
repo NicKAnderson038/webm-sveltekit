@@ -1,4 +1,4 @@
-const steps = [
+let steps = [
 	{
 		video: '/01.webm',
 		audio: '/01.mp3',
@@ -53,7 +53,7 @@ const steps = [
 		audio: '/08.mp3',
 		endLoop: 3.2,
 		startLoop: 0,
-		name: 'Last Minute',
+		name: 'Last Minute'
 	},
 	{
 		video: '/09.webm',
