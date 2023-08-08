@@ -8,7 +8,7 @@ export async function load({ fetch, params }) {
 			data: {
 				...item,
 				video: 'https://dl6.webmfiles.org/big-buck-bunny_trailer.webm',
-				// audio: 'http://www.jplayer.org/audio/mp3/Miaow-01-Tempered-song.mp3',
+				audio: 'http://www.jplayer.org/audio/mp3/Miaow-01-Tempered-song.mp3',
 				endLoop: 8,
 				startLoop: 5,
 				name: `Good Moring ${params.slug}`,

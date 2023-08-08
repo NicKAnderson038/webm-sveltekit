@@ -77,7 +77,7 @@
 			<track kind="captions" />
 			Your browser does not support HTML5 video.
 		</video>
-		<!-- {#if !!$page?.data?.data?.audio && $useAudio}
+		{#if $useAudio && !!$page?.data?.data?.audio}
 			<audio
 				id="audio"
 				src={$useAudio ? $page?.data?.data?.audio : ''}
@@ -85,7 +85,7 @@
 				loop
 				bind:currentTime={currentAudioTime}
 			/>
-		{/if} -->
+		{/if}
 	</CardHeader>
 	<CardActions>
 		<Button
