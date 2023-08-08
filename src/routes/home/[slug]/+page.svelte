@@ -23,26 +23,22 @@
 	let action = false
 	// TODO: duration might work better as undefined
 	let duration = 0
-	let currentTime = 50
-	let currentAudioTime = 0
+	let currentTime = 100000
+	let currentAudioTime = 100000
 
 	onMount(() => {
 		video = document.getElementById('video')
 		audio = document.getElementById('audio')
 		video.currentTime = $page?.data?.data?.startLoop
-		// audio.currentAudioTime = $page?.data?.data?.startLoop
+		console.log(!!audio)
+		if (!!audio) {
+			audio.currentAudioTime = $page?.data?.data?.startLoop
+		}
 	})
 
 	const trackCurrentTime = async () => {
-		// if(currentTime > $page?.data?.data?.endLoop && action) {
-		//     console.log(duration)
-		//     await video?.play()
-		//     // video.currentTime = $page?.data?.data?.startLoop
-		//     currentTime = $page?.data?.data?.startLoop
-		//     action = false
-		// }
-		if (currentTime > duration - 0.09 && action) {
-			console.log('Action: ', currentTime)
+		if (currentTime >= duration - 0.09 && action) {
+			console.log('Full Video End Time: ', currentTime)
 			await audio?.play()
 			await video?.play()
 			currentAudioTime = $page?.data?.data?.startLoop
@@ -50,12 +46,11 @@
 			action = false
 		}
 		if (currentTime > $page?.data?.data?.endLoop && !action) {
-			console.log('Regular: ', currentTime)
+			console.log('Short Loop End Time: ', currentTime)
 			await audio?.play()
 			await video?.play()
 			currentAudioTime = $page?.data?.data?.startLoop
 			currentTime = $page?.data?.data?.startLoop
-			action = false
 		}
 		return
 	}
