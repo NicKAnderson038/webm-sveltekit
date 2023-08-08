@@ -1,59 +1,41 @@
 <script>
-	import Counter from './Counter.svelte'
-	import welcome from '$lib/images/svelte-welcome.webp'
-	import welcome_fallback from '$lib/images/svelte-welcome.png'
+	import { page } from '$app/stores'
+	import { useAudio } from '../stores/store.js'
+	import Button from '../lib/components/Buttons/Button.svelte'
+	import Card from '../lib/components/Card/Wrapper.svelte'
+	import CardHeader from '../lib/components/Card/Header.svelte'
+	import CardActions from '../lib/components/Card/Footer.svelte'
+
+	// let poster = "https://sveltejs.github.io/assets/caminandes-llamigos.jpg"
+
+	const video = {
+		src: $page?.data?.data?.[0]?.video,
+		// src: '/video/37.webm',
+		// width: '600',
+		autoPlay: true,
+		loop: true,
+	}
+	$: muted = !$useAudio || !!$page?.data?.data?.[0]?.audio
+	$: console.log($page?.data)
 </script>
 
 <svelte:head>
-	<title>Sample</title>
-	<meta name="description" content="Svelte demo app" />
+	<title>Welcome</title>
 </svelte:head>
 
-<section>
-	<h1>
-		<span class="welcome">
-			<picture>
-				<source srcset={welcome} type="image/webp" />
-				<img src={welcome_fallback} alt="Welcome" />
-			</picture>
-		</span>
+<Card>
+	<CardHeader
+		><video {...video} bind:muted style="width:100%;">
+			<track kind="captions" /> Your browser does not support HTML5 video.
+		</video>
 
-		to your new<br />SvelteKit app
-	</h1>
-
-	<h2>
-		try editing <strong>src/routes/+page.svelte</strong>
-	</h2>
-
-	<Counter />
-</section>
-
-<style>
-	section {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		flex: 0.6;
-	}
-
-	h1 {
-		width: 100%;
-	}
-
-	.welcome {
-		display: block;
-		position: relative;
-		width: 100%;
-		height: 0;
-		padding: 0 0 calc(100% * 495 / 2048) 0;
-	}
-
-	.welcome img {
-		position: absolute;
-		width: 100%;
-		height: 100%;
-		top: 0;
-		display: block;
-	}
-</style>
+		{#if !!$page?.data?.data?.[0]?.audio && $useAudio}
+			<audio width="400" autoPlay loop>
+				<source src={$page?.data?.data?.[0]?.audio} type="audio/mpeg" />
+			</audio>
+		{/if}
+	</CardHeader>
+	<CardActions>
+		<Button route="/1" disabled={$page?.data?.isLoading}>Begin</Button>
+	</CardActions>
+</Card>

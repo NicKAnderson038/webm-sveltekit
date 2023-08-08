@@ -2,11 +2,11 @@
 	import { page } from '$app/stores'
 	import { goto } from '$app/navigation'
 	import { onMount } from 'svelte'
-	import { useAudio } from '../../../stores/store.js'
-	import Button from '../../../lib/components/Buttons/Button.svelte'
-	import Card from '../../../lib/components/Card/Wrapper.svelte'
-	import CardHeader from '../../../lib/components/Card/Header.svelte'
-	import CardActions from '../../../lib/components/Card/Footer.svelte'
+	import { useAudio } from '../../stores/store.js'
+	import Button from '../../lib/components/Buttons/Button.svelte'
+	import Card from '../../lib/components/Card/Wrapper.svelte'
+	import CardHeader from '../../lib/components/Card/Header.svelte'
+	import CardActions from '../../lib/components/Card/Footer.svelte'
 
 	const controls = {
 		src: $page?.data?.data?.video,
@@ -41,8 +41,10 @@
 			console.log('Full Video End Time: ', currentTime)
 			await audio?.play()
 			await video?.play()
-			currentAudioTime = $page?.data?.data?.startLoop
-			currentTime = $page?.data?.data?.startLoop
+			currentAudioTime = 0
+			currentTime = 0
+			// currentAudioTime = $page?.data?.data?.startLoop
+			// currentTime = $page?.data?.data?.startLoop
 			action = false
 		}
 		if (currentTime > $page?.data?.data?.endLoop && !action) {
@@ -87,7 +89,7 @@
 	</CardHeader>
 	<CardActions>
 		<Button
-			click={() => (step === 1 ? goto('/home') : goto(`/home/${step - 1}`))}
+			click={() => (step === 1 ? goto('/') : goto(`/${step - 1}`))}
 			disabled={action}
 			style="primary with-icon svg chevron"
 			><svg
@@ -114,7 +116,7 @@
 			</svg>
 		</Button>
 		<Button
-			click={() => (step >= 10 ? goto('/home') : goto(`/home/${step + 1}`))}
+			click={() => (step >= 10 ? goto('/') : goto(`/${step + 1}`))}
 			disabled={action}
 			style="primary with-icon svg chevron"
 		>
