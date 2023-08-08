@@ -21,7 +21,8 @@
 	let video
 	let audio
 	let action = false
-	let duration
+    // TODO: duration might work better as undefined
+	let duration = 0
 	let currentTime = 50
 	let currentAudioTime = 0
 

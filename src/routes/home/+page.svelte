@@ -16,7 +16,6 @@
 		loop: true
 	};
 	$: muted = !$useAudio || !!$page?.data?.data?.[0]?.audio;
-	$: console.log($page?.data?.data?.[0]?.audio);
 	$: console.log($page?.data);
 </script>
 
@@ -37,6 +36,6 @@
 		{/if}
 	</CardHeader>
 	<CardActions>
-		<Button route="/home/1">Begin</Button>
+		<Button route="/home/1" disabled={$page?.data?.isLoading}>Begin</Button>
 	</CardActions>
 </Card>

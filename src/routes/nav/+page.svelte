@@ -11,10 +11,17 @@
 	<CardBody>
 		<ul>
 			{#each steps as step, i}
-				<li on:click={() => goto(`/home/${i+1}`)}>
+				<!-- <li on:click={() => goto(`/home/${i+1}`)}>
 					<span>
-						{step.name}
+						{i+1}. {step.name}
 					</span>
+				</li> -->
+				<li aria-current={`/home/${i + 1}`}>
+					<a href={`/home/${i + 1}`}
+						><span>
+							{i + 1}. {step.name}
+						</span></a
+					>
 				</li>
 			{/each}
 		</ul>
@@ -68,11 +75,17 @@
 		background: darkorange;
 		display: block;
 		float: left;
-		padding: 1rem;
+		/* padding: 1rem; */
 		position: relative;
 		text-decoration: none;
 		transition-duration: 0.2s;
 		font-weight: bold;
+	}
+
+	a {
+		padding: 1rem;
+		width: 100%;
+		display: flex;
 	}
 
 	li span {
@@ -84,9 +97,10 @@
 		cursor: pointer;
 	}
 
-	li:hover > span {
+	li:hover > a {
 		transition: all 0.5s ease;
 		margin-left: 0.5rem;
 		color: #921a11;
+		text-decoration: none;
 	}
 </style>
