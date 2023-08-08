@@ -1,4 +1,4 @@
-const steps = [
+let steps = [
 	{
 		video: '/01.webm',
 		audio: '/01.mp3',
