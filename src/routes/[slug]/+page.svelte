@@ -3,15 +3,13 @@
 	import { goto } from '$app/navigation'
 	import { onMount } from 'svelte'
 	import { useAudio } from '../../stores/store.js'
-	import Button from '../../lib/components/Buttons/Button.svelte'
-	import Card from '../../lib/components/Card/Wrapper.svelte'
-	import CardHeader from '../../lib/components/Card/Header.svelte'
-	import CardActions from '../../lib/components/Card/Footer.svelte'
+	import Button from '$lib/components/Buttons/Button.svelte'
+	import Card from '$lib/components/Card/Wrapper.svelte'
+	import CardHeader from '$lib/components/Card/Header.svelte'
+	import CardActions from '$lib/components/Card/Footer.svelte'
 
 	const controls = {
 		src: $page?.data?.data?.video,
-		// src: '/video/37.webm',
-		// width: '600',
 		autoPlay: true,
 		loop: true,
 	}
@@ -62,6 +60,11 @@
 </script>
 
 <!-- {`${$page?.data?.data?.video}#t=5,8`} -->
+
+<svelte:head>
+	<title>Video: {$page?.data?.data?.id}</title>
+</svelte:head>
+
 <Card>
 	<CardHeader
 		><video
@@ -148,7 +151,4 @@
 			</svg>
 		</Button>
 	</CardActions>
-	<!-- <CardActions>
-		<Button route="/home">Home</Button>
-	</CardActions> -->
 </Card>
