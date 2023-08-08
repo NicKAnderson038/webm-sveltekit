@@ -9,14 +9,15 @@
 	// let poster = "https://sveltejs.github.io/assets/caminandes-llamigos.jpg"
 
 	const video = {
-		src: $page?.data?.video,
+		src: $page?.data?.data?.[0]?.video,
 		// src: '/video/37.webm',
 		// width: '600',
 		autoPlay: true,
 		loop: true
 	};
-	$: muted = !$useAudio || !!$page?.data?.audio;
-	$: console.log('sound links:', !$useAudio || !!$page?.data?.audio);
+	$: muted = !$useAudio || !!$page?.data?.data?.[0]?.audio;
+	$: console.log($page?.data?.data?.[0]?.audio);
+	$: console.log($page?.data);
 </script>
 
 <svelte:head>
@@ -29,13 +30,13 @@
 			<track kind="captions" /> Your browser does not support HTML5 video.
 		</video>
 
-		{#if !!$page?.data?.audio && $useAudio}
+		{#if !!$page?.data?.data?.[0]?.audio && $useAudio}
 			<audio width="400" autoPlay loop>
-				<source src={$page?.data?.audio} type="audio/mpeg" />
+				<source src={$page?.data?.data?.[0]?.audio} type="audio/mpeg" />
 			</audio>
 		{/if}
 	</CardHeader>
 	<CardActions>
-		<Button route="/movie?clip=0">Begin</Button>
+		<Button route="/home/1">Begin</Button>
 	</CardActions>
 </Card>
